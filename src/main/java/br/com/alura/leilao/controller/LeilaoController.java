@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.alura.leilao.dao.LeilaoDao;
-import br.com.alura.leilao.dao.UsuarioDao;
+import br.com.alura.leilao.integracao.dao.LeilaoDao;
+import br.com.alura.leilao.integracao.dao.UsuarioDao;
 import br.com.alura.leilao.dto.NovoLanceDto;
 import br.com.alura.leilao.dto.NovoLeilaoDto;
 import br.com.alura.leilao.model.Leilao;

@@ -3,9 +3,9 @@ package br.com.alura.leilao.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.alura.leilao.dao.LanceDao;
-import br.com.alura.leilao.dao.LeilaoDao;
-import br.com.alura.leilao.dao.UsuarioDao;
+import br.com.alura.leilao.integracao.dao.LanceDao;
+import br.com.alura.leilao.integracao.dao.LeilaoDao;
+import br.com.alura.leilao.integracao.dao.UsuarioDao;
 import br.com.alura.leilao.dto.NovoLanceDto;
 import br.com.alura.leilao.model.Lance;
 import br.com.alura.leilao.model.Leilao;

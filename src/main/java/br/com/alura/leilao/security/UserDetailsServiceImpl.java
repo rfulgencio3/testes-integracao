@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import br.com.alura.leilao.dao.UsuarioDao;
+import br.com.alura.leilao.integracao.dao.UsuarioDao;
 import br.com.alura.leilao.model.Usuario;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
