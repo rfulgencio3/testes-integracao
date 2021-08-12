@@ -6,21 +6,38 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class LeilaoTest {
 
     private LeilaoPage paginaDeLeilao;
-    
-    @AfterEach
-    public void afterEach(){
+    private CadastroLeilaoPage paginaDeCadastro;
 
-        this.paginaDeLeilao.fechar();
-    }
-
-    @Test
-    public void deveriaCadatrarLeilao(){
+    @BeforeEach
+    public void beforeEach(){
         LoginPage paginaDeLogin = new LoginPage();
         paginaDeLogin.preencheFormularioDeLogin("fulano", "pass");
         this.paginaDeLeilao = paginaDeLogin.efetuaLogin();
-        CadastroLeilaoPage paginaDeCadastro = paginaDeLeilao.carregarFormulario();
+        this.paginaDeCadastro = paginaDeLeilao.carregarFormulario();
+    }
+    
+    @Test
+    public void deveriaCadatrarLeilao(){
+        String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String nome = "Leilao do dia " + data;
+        String valor = "500.00";
+
+        this.paginaDeLeilao = paginaDeCadastro.cadastrarLeilao(nome, valor, data);
+        Assert.assertTrue(paginaDeLeilao.eLeilaoCadastrado(nome, valor, data));
+    }
+
+    @Test
+    public void deveriaValidarCadatroDeLeilao(){
+        this.paginaDeLeilao = paginaDeCadastro.cadastrarLeilao("", "", "");
+
+        Assert.assertFalse(this.paginaDeCadastro.ePaginaAtual());
+        Assert.assertTrue(this.paginaDeLeilao.ePaginaAtual());
+        Assert.assertTrue(this.paginaDeCadastro.mensagensDeValidacao());
     }
 }
